@@ -2,11 +2,11 @@ import 'dart:math';
 import 'dart:ui';
 import "dart:ui" as ui;
 
-import 'package:flare/flare.dart' as flare;
-import 'package:flare/flare/actor_image.dart' as flare;
-import 'package:flare/flare/math/aabb.dart' as flare;
-import 'package:flare/flare/math/mat2d.dart' as flare;
-import 'package:flare/flare/math/vec2d.dart' as flare;
+import 'package:flare_flutter/flare.dart' as flare;
+import 'package:flare_dart/actor_image.dart' as flare;
+import 'package:flare_dart/math/aabb.dart' as flare;
+import 'package:flare_dart/math/mat2d.dart' as flare;
+import 'package:flare_dart/math/vec2d.dart' as flare;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
@@ -106,6 +106,7 @@ class VignetteRenderObject extends RenderBox {
         /// Instance [_flareActor] through the actor reference in the asset
         /// and set the initial starting value for its animation.
         _flareActor = asset.actor.makeInstance();
+		_flareActor.initializeGraphics();
         asset.animation.apply(asset.animation.duration, _flareActor, 1.0);
         _flareActor.advance(0.0);
         if (asset.filename == "assets/Amelia_Earhart/Amelia_Earhart.flr") {
@@ -202,7 +203,7 @@ class VignetteRenderObject extends RenderBox {
             ..filterQuality = ui.FilterQuality.low
             ..color = Colors.white.withOpacity(asset.opacity));
     } else if (asset is TimelineNima && _nimaActor != null) {
-      /// If we have a [TimelineNima] actor set it up properly and paint it.
+      /// If we have a [TimelineNima] asset, set it up properly and paint it.
       /// 
       /// 1. Calculate the bounds for the current object.
       /// An Axis-Aligned Bounding Box (AABB) is already set up when the asset is first loaded.
@@ -278,7 +279,7 @@ class VignetteRenderObject extends RenderBox {
       /// 6. Restore the canvas' original transform state.
       canvas.restore();
     } else if (asset is TimelineFlare && _flareActor != null) {
-      /// If we have a [TimelineFlare]  actor set it up properly and paint it.
+      /// If we have a [TimelineFlare] asset set it up properly and paint it.
       /// 
       /// 1. Calculate the bounds for the current object.
       /// An Axis-Aligned Bounding Box (AABB) is already set up when the asset is first loaded.

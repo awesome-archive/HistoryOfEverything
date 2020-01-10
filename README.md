@@ -82,3 +82,10 @@ To have the animation reproduce correctly, it's also necessary to call `advance(
 This is all made possible by relying on Flutter's `SchedulerBinding.scheduleFrameCallback()`.
 
 This is just a brief overview of how the Flare widgets can be customized for every experience.
+
+## License
+All the animations in the `/assets` folder are distributed under the **CC-BY** license.
+
+All the articles in `assets/articles` are from [Wikipedia](https://www.wikipedia.org/), and are thus distributed under the **GNU Free Documentation License**.
+
+The rest of the repository's code and contents are distributed under the **MIT** license as specified in [LICENSE](LICENSE).
